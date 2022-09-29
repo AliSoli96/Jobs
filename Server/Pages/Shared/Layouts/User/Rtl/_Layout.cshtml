@@ -1,0 +1,150 @@
+@{
+	var currentCultureName =
+	System.Threading.Thread
+	.CurrentThread.CurrentUICulture.Name;
+}
+
+<!doctype html>
+
+<html lang="@(currentCultureName)" dir="rtl">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<partial name="PartialViews/_FavoriteIcon" />
+
+	<partial name="PartialViews/Admin/Rtl/_StyleSheets" />
+
+	@(await RenderSectionAsync(name: "StyleSheets", required: false))
+</head>
+
+<body>
+	<partial name="PartialViews/_DisplayToastMessages" />
+
+	@*
+	<partial name="PartialViews/Rtl/_Header" />
+
+	<main role="main" class="my-5 py-4">
+	<div class="container">
+	@(RenderBody())
+	</div>
+	</main>
+
+	<partial name="PartialViews/Rtl/_Footer" />
+	*@
+
+
+	<div class="container-fluid">
+		<div class="row flex-nowrap">
+			<div class="col-auto px-sm-2 px-0 bg-dark">
+				<div class="d-flex flex-column align-items-center align-items-sm-start px-4 pt-2 text-white min-vh-100">
+					<a href="/"
+					   class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+
+						<div class="dropdown pb-4">
+							<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+							   id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+								<img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30"
+									 class="rounded-circle">
+								<span class="d-none d-sm-inline mx-1">حسین بیگی</span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+								<li>
+									<a class="dropdown-item" asp-page="/Account/UpdateProfile">
+										@(Resources.PageTitles.UpdateProfile)
+									</a>
+								</li>
+
+								<li>
+									<a class="dropdown-item" asp-page="/Account/ChangePassword">
+										@(Resources.PageTitles.ChangePassword)
+									</a>
+								</li>
+
+								<li><hr class="dropdown-divider"></li>
+
+								<li>
+									<a class="dropdown-item text-danger" asp-page="/Account/Terminate">
+										@(Resources.PageTitles.TerminateAccount)
+									</a>
+								</li>
+
+								<li>
+									<a class="dropdown-item text-warning" asp-page="/Account/Deactivate">
+										@(Resources.PageTitles.DeactivateAccount)
+									</a>
+								</li>
+
+								<li><hr class="dropdown-divider"></li>
+
+								<li>
+									<a class="dropdown-item" asp-page="/Account/Logout">
+										@(Resources.PageTitles.Logout)
+									</a>
+								</li>
+							</ul>
+						</div>
+					</a>
+					<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start "
+						id="menu">
+						<li class="nav-item">
+							<a href="#" class="text-white nav-link align-middle px-0">
+								<i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">@(Resources.DataDictionary.Dashboard)</span>
+							</a>
+						</li>
+
+						@*	
+						<li>
+						<a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+						<i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">@(Resources.DataDictionary.Dashboard)</span>
+						</a>
+						<ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+						<li class="w-100">
+						<a href="#" class="nav-link px-0">
+						<span class="d-none d-sm-inline">Item</span> 1
+						</a>
+						</li>
+						<li>
+						<a href="#" class="nav-link px-0">
+						<span class="d-none d-sm-inline">Item</span> 2
+						</a>
+						</li>
+						</ul>
+						</li>*@
+
+						<li>
+							<a asp-page="/Admin/Users/Index" class="text-white nav-link px-0 align-middle">
+								<i class="fs-4 bi-person"></i> <span class="ms-1 d-none d-sm-inline">@(Resources.DataDictionary.Users)</span>
+							</a>
+						</li>
+					</ul>
+					<hr>
+				</div>
+			</div>
+			<div class="col py-3">
+
+				<partial name="PartialViews/Admin/Rtl/_Header" />
+
+				<main role="main" class="my-5 py-4">
+					<div class="container">
+						@(RenderBody())
+					</div>
+				</main>
+
+				<partial name="PartialViews/Admin/Rtl/_Footer" />
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<partial name="PartialViews/Admin/Rtl/_Scripts" />
+
+	@(await RenderSectionAsync(name: "Scripts", required: false))
+</body>
+
+</html>
